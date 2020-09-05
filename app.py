@@ -1,6 +1,9 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
 
 stores = [
     {
@@ -13,6 +16,11 @@ stores = [
         ]
     }
 ]
+
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 
 # POST /store data: {name:}
